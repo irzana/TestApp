@@ -1,0 +1,88 @@
+﻿@model GuessTheAnimal.AnimalDetail
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@using (Html.BeginForm())
+{
+    if (Model != null)
+    {
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Facts)
+        </th>
+        <th>
+            @Html.HiddenFor(model => model.AnimalId)
+            @Html.HiddenFor(model => model.FactId)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            <label>Does the animal @Html.DisplayFor(model => model.Facts)</label> 
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Animal.Name)
+        </td>
+       
+    </tr>
+    <tr>
+        <td>
+            @Html.RadioButtonFor(model => model.SelectedAnswer, "Yes") Yes
+            @Html.RadioButtonFor(model => model.SelectedAnswer, "No") No
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Next" />
+        </td>
+    </tr>
+
+
+</table>
+    }
+    <table>
+        <tr>
+            <td>
+                @{
+                    if (ViewData["EndGuess"] != null && (bool)ViewData["EndGuess"] == true)
+                    {
+                        if (ViewData["AnimalFound"] != null)
+                        {
+                            if ((bool)ViewData["AnimalFound"] == false)
+                            {
+                                <label>Animal not found, try again</label>
+                            }
+                            else
+                            {
+                                if (ViewData["AnimalName"] != null)
+                                {
+                                    <div><label>Animal is, @ViewData["AnimalName"].ToString() </label></div>
+                                }
+                            }
+                        }
+
+
+                    }
+
+
+                }
+
+
+            </td>
+        </tr>
+
+
+    </table>
+                }
