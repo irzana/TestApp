@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuessTheAnimal
+namespace GuessTheAnimal.Models
 {
     using System;
     using System.Data.Entity;

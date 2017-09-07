@@ -147,25 +147,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs">
+    <Compile Include="Models\Animal.cs">
       <DependentUpon>AnimalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AnimalDB.Context.cs">
+    <Compile Include="Models\AnimalDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnimalDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AnimalDB.cs">
+    <Compile Include="Models\AnimalDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnimalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AnimalDB.Designer.cs">
+    <Compile Include="Models\AnimalDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnimalDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AnimalDetail.cs">
+    <Compile Include="Models\AnimalDetail.cs">
       <DependentUpon>AnimalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -178,16 +178,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AnimalDetail.cs" />
+    <Compile Include="Models\AnimalDetailPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AnimalDB.Context.tt">
+    <Content Include="Models\AnimalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AnimalDB.edmx</DependentUpon>
       <LastGenOutput>AnimalDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AnimalDB.tt">
+    <Content Include="Models\AnimalDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AnimalDB.edmx</DependentUpon>
       <LastGenOutput>AnimalDB.cs</LastGenOutput>
@@ -207,11 +207,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="AnimalDB.edmx">
+    <EntityDeploy Include="Models\AnimalDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AnimalDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="AnimalDB.edmx.diagram">
+    <Content Include="Models\AnimalDB.edmx.diagram">
       <DependentUpon>AnimalDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

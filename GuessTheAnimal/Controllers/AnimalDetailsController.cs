@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using GuessTheAnimal;
+using GuessTheAnimal.Models;
 
 namespace GuessTheAnimal.Controllers
 {
