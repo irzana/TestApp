@@ -18,7 +18,7 @@ namespace GuessTheAnimal
         public string SelectedYes { get; set; }
         public string SelectedNo { get; set; }
 
-        [Required(ErrorMessage ="Please answer the question")]
+        //[Required(ErrorMessage ="Please answer the question")]
         public string SelectedAnswer { get; set; }
 
     }

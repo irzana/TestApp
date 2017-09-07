@@ -13,7 +13,7 @@
     ViewBag.Title = "Questions";
 }
 
-<h2>Questions</h2>
+<h2>Guess the Animal</h2>
 
 
 @using (Html.BeginForm())
@@ -25,38 +25,29 @@
             
             <tr>
                 <td>
-                    <label>Does the animal @Html.DisplayFor(model => model.Facts)</label> 
+                    <p>Does the animal @Html.DisplayFor(model => model.Facts)</p> 
+                    
+                    @Html.RadioButtonFor(model => model.SelectedAnswer, "Yes") Yes
+                    @Html.RadioButtonFor(model => model.SelectedAnswer, "No") No
+                    @Html.ValidationMessageFor(model => model.SelectedAnswer, "", new { @class = "text-danger" })
                 </td>
                 @*<td>
                     @Html.DisplayFor(model => model.Animal.Name)
                 </td>*@
 
             </tr>
-            <tr>
-                <td>
-                    @Html.RadioButtonFor(model => model.SelectedAnswer, "Yes") Yes
-                    @Html.RadioButtonFor(model => model.SelectedAnswer, "No") No
-                    @Html.ValidationMessageFor(model => model.SelectedAnswer,"", new { @class = "text-danger" })
-                </td>
-
-            </tr>
+          
             <tr>
                 <td>
                     <input type="submit" value="Next" class="btn btn-default"  />
                 </td>
-            </tr>
-            <tr>
-
-                <th>
-                    @Html.HiddenFor(model => model.AnimalId)
-                    @Html.HiddenFor(model => model.FactId)
-                </th>
-
-            </tr>
+            </tr>          
 
         </table>
+        @Html.HiddenFor(model => model.AnimalId)
+        @Html.HiddenFor(model => model.FactId)
     }
-    <table>
+    <table class="table">
         <tr>
             <td>
                 @{
@@ -72,7 +63,7 @@
                             {
                                 if (ViewData["AnimalName"] != null)
                                 {
-                                    <div><label>Animal is, @ViewData["AnimalName"].ToString() </label></div>
+                                    <div><label>The Animal is, @ViewData["AnimalName"].ToString() </label></div>
                                 }
                             }
                         }

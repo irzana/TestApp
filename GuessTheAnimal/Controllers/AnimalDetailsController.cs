@@ -68,13 +68,13 @@ namespace GuessTheAnimal.Controllers
         }
 
         // GET: AnimalDetails/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnimalDetail animalDetail = await db.AnimalDetails.FindAsync(id);
+            AnimalDetail animalDetail = db.AnimalDetails.Find(id);
             if (animalDetail == null)
             {
                 return HttpNotFound();
@@ -94,12 +94,12 @@ namespace GuessTheAnimal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FactId,Facts,AnimalId")] AnimalDetail animalDetail)
+        public ActionResult Create([Bind(Include = "FactId,Facts,AnimalId")] AnimalDetail animalDetail)
         {
             if (ModelState.IsValid)
             {
                 db.AnimalDetails.Add(animalDetail);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -108,13 +108,13 @@ namespace GuessTheAnimal.Controllers
         }
 
         // GET: AnimalDetails/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnimalDetail animalDetail = await db.AnimalDetails.FindAsync(id);
+            AnimalDetail animalDetail =  db.AnimalDetails.Find(id);
             if (animalDetail == null)
             {
                 return HttpNotFound();
