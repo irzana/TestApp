@@ -11,12 +11,14 @@ namespace GuessTheAnimal
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class AnimalDetail
     {
         public string SelectedYes { get; set; }
         public string SelectedNo { get; set; }
 
+        [Required(ErrorMessage ="Please answer the question")]
         public string SelectedAnswer { get; set; }
 
     }

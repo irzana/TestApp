@@ -15,6 +15,12 @@ namespace GuessTheAnimal.BusinessLayer
     {
         private AnimalEntities db = new AnimalEntities();
 
+        /// <summary>
+        /// Retrieve one fact(Animal Detail) for each animal.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="currentFact"></param>
+        /// <returns></returns>
         public AnimalDetail GetFactForNextAnimal(List<AnimalDetail> items, AnimalDetail currentFact)
         {
             if (currentFact != null)
@@ -32,6 +38,11 @@ namespace GuessTheAnimal.BusinessLayer
             
         }
 
+        /// <summary>
+        /// if one fact is matched then retrieve the next fact for the same Animal.
+        /// </summary>
+        /// <param name="currentFact"></param>
+        /// <returns></returns>
         public AnimalDetail GetNextFactForAnimal(AnimalDetail currentFact)
         {
             if (currentFact != null)
@@ -49,9 +60,6 @@ namespace GuessTheAnimal.BusinessLayer
                    
                 }
                 
-
-                //from element in db.AnimalDetails.Include(a => a.Animal)
-                //                select groups.OrderBy(p => p.FactId).FirstOrDefault();
             }
             return null;
 

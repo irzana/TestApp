@@ -1,4 +1,4 @@
-﻿@model GuessTheAnimal.AnimalDetail
+﻿@model IEnumerable<GuessTheAnimal.AnimalDetail>
 
 @{
     ViewBag.Title = "Index";
@@ -9,80 +9,32 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-
-@using (Html.BeginForm())
-{
-    if (Model != null)
-    {
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Facts)
         </th>
         <th>
-            @Html.HiddenFor(model => model.AnimalId)
-            @Html.HiddenFor(model => model.FactId)
+            @Html.DisplayNameFor(model => model.Animal.Name)
         </th>
         <th></th>
     </tr>
 
-    <tr>
-        <td>
-            <label>Does the animal @Html.DisplayFor(model => model.Facts)</label> 
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.Animal.Name)
-        </td>
-       
-    </tr>
-    <tr>
-        <td>
-            @Html.RadioButtonFor(model => model.SelectedAnswer, "Yes") Yes
-            @Html.RadioButtonFor(model => model.SelectedAnswer, "No") No
-        </td>
-
-    </tr>
-    <tr>
-        <td>
-            <input type="submit" value="Next" />
-        </td>
-    </tr>
-
-
-</table>
-    }
-    <table>
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                @{
-                    if (ViewData["EndGuess"] != null && (bool)ViewData["EndGuess"] == true)
-                    {
-                        if (ViewData["AnimalFound"] != null)
-                        {
-                            if ((bool)ViewData["AnimalFound"] == false)
-                            {
-                                <label>Animal not found, try again</label>
-                            }
-                            else
-                            {
-                                if (ViewData["AnimalName"] != null)
-                                {
-                                    <div><label>Animal is, @ViewData["AnimalName"].ToString() </label></div>
-                                }
-                            }
-                        }
-
-
-                    }
-
-
-                }
-
-
+                @Html.DisplayFor(modelItem => item.Facts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animal.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FactId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FactId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FactId })
             </td>
         </tr>
+    }
 
-
-    </table>
-                }
+</table>

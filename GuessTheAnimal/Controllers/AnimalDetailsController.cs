@@ -18,62 +18,13 @@ namespace GuessTheAnimal.Controllers
         // GET: AnimalDetails
         public ActionResult Index()
         {
-            //var animalDetails = db.AnimalDetails.Include(a => a.Animal).GroupBy(ad => ad.AnimalId).Take(1);
-
-            var animalDetails = from element in db.AnimalDetails.Include(a => a.Animal)
-                                group element by element.AnimalId
-                                into groups
-                                select groups.OrderBy(p => p.FactId).FirstOrDefault();
-            var temp = animalDetails.ToList();
-            @ViewBag.animalDetails = temp;
-
-            return View(animalDetails.ToList().FirstOrDefault());
-        }
-
-        [HttpPost]
-        public ActionResult Index(AnimalDetail animalDetail)
-        {
-            //var animalDetails = db.AnimalDetails.Include(a => a.Animal).GroupBy(ad => ad.AnimalId).Take(1);
-
-            //var animalDetails = from element in db.AnimalDetails.Include(a => a.Animal)
-            //                    group element by element.AnimalId
-            //                    into groups
-            //                    select groups.OrderBy(p => p.FactId).FirstOrDefault();
-
-            AnimalDetail temp = null;
-            
-
-            if (!string.IsNullOrEmpty(animalDetail.SelectedAnswer) && animalDetail.SelectedAnswer.Equals("Yes"))
-            {
-                temp = new BusinessLayer.BLAnimalDetail().GetNextFactForAnimal( animalDetail);
-                ViewData["AnimalFound"] = true;
-            }
-            else if (!string.IsNullOrEmpty(animalDetail.SelectedAnswer) && animalDetail.SelectedAnswer.Equals("No"))
-            {
-                temp = new BusinessLayer.BLAnimalDetail().GetFactForNextAnimal((List<AnimalDetail>)@ViewBag.animalDetails, animalDetail);
-                ViewData["AnimalFound"] = false;
-            }
-            ModelState.Clear();
-
-            if (temp == null)
-            {
-                ViewData["EndGuess"] = true;
-
-                var animal = db.Animals.Find(animalDetail.AnimalId);
-                if (animal != null)
-                {
-                    ViewData["AnimalName"] = animal.Name;
-                }
-            }
-
-            return View(temp);
+            var animalDetails = db.AnimalDetails.Include(a => a.Animal);
+            return View(animalDetails.ToList());
         }
 
         // GET: AnimalDetails
         public ActionResult Question()
         {
-            //var animalDetails = db.AnimalDetails.Include(a => a.Animal).GroupBy(ad => ad.AnimalId).Take(1);
-
             var animalDetails = from element in db.AnimalDetails.Include(a => a.Animal)
                                 group element by element.AnimalId
                                 into groups
@@ -87,13 +38,6 @@ namespace GuessTheAnimal.Controllers
         [HttpPost]
         public ActionResult Question(AnimalDetail animalDetail)
         {
-            //var animalDetails = db.AnimalDetails.Include(a => a.Animal).GroupBy(ad => ad.AnimalId).Take(1);
-
-            //var animalDetails = from element in db.AnimalDetails.Include(a => a.Animal)
-            //                    group element by element.AnimalId
-            //                    into groups
-            //                    select groups.OrderBy(p => p.FactId).FirstOrDefault();
-
             AnimalDetail temp = null;
 
 
